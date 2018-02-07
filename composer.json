@@ -1,0 +1,34 @@
+{
+    "name": "djansen20/bitstamp-http-api",
+    "description": "Package for the implementation of the Bitstamp HTTP API",
+    "type": "library",
+    "keywords": [
+        "bitstamp",
+        "api"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Danny Jansen",
+            "email": "danny.jansen93@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "BitstampApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BitstampApi\\Tests\\": "tests/"
+        }
+    }
+}

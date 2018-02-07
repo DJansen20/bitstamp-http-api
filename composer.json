@@ -23,12 +23,12 @@
     },
     "autoload": {
         "psr-4": {
-            "BitstampApi\\": "src/"
+            "Bitstamp\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BitstampApi\\Tests\\": "tests/"
+            "Bitstamp\\Tests\\": "tests/"
         }
     }
 }

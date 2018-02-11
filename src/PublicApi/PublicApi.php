@@ -15,12 +15,14 @@ use Bitstamp\PublicApi\Requests\TickerRequest;
 use Bitstamp\PublicApi\Requests\HourlyTickerRequest;
 use Bitstamp\PublicApi\Requests\OrderBookRequest;
 use Bitstamp\PublicApi\Requests\TradingPairsInfoRequest;
+use Bitstamp\PublicApi\Requests\TransactionsRequest;
 
 use Bitstamp\PublicApi\Responses\EurUsdConversionRateResponse;
 use Bitstamp\PublicApi\Responses\TickerResponse;
 use Bitstamp\PublicApi\Responses\HourlyTickerResponse;
 use Bitstamp\PublicApi\Responses\OrderBookResponse;
 use Bitstamp\PublicApi\Responses\TradingPairsInfoResponse;
+use Bitstamp\PublicApi\Responses\TransactionsResponse;
 
 class PublicApi
 {
@@ -72,8 +74,18 @@ class PublicApi
         return $this->response;
     }
 
-    public function getTransactions()
+    /**
+     * @param string $pair
+     * @return Response
+     * @throws \Exception
+     */
+    public function getTransactions(string $pair): Response
     {
+        $this->request = new TransactionsRequest($pair);
+        $json = $this->sendRequest();
+        $this->response = new TransactionsResponse($json);
+
+        return $this->response;
     }
 
     /**

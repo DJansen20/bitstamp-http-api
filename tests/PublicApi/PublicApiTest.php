@@ -67,6 +67,18 @@ class PublicApiTest extends TestCase
      * @param PublicApi $publicApi
      * @throws \Exception
      */
+    public function testGetTransactions(PublicApi $publicApi)
+    {
+        $response = $publicApi->getTransactions(CurrencyPair::BTCUSD);
+        $this->assertInstanceOf('Bitstamp\\PublicApi\\Responses\\TransactionsResponse', $response);
+    }
+
+    /**
+     * @depends testCanBeConstructed
+     *
+     * @param PublicApi $publicApi
+     * @throws \Exception
+     */
     public function testGetTradingPairInfo(PublicApi $publicApi)
     {
         $response = $publicApi->getTradingPairInfo();

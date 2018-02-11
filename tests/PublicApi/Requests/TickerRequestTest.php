@@ -22,7 +22,7 @@ class TickerRequestTest extends TestCase
      */
     public function testCanBeConstructed(): TickerRequest
     {
-        $request = new TickerRequest();
+        $request = new TickerRequest(CurrencyPair::BTCUSD);
         $this->assertInstanceOf('Bitstamp\\PublicApi\\Requests\\TickerRequest', $request);
 
         return $request;

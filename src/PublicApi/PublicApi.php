@@ -9,9 +9,8 @@ namespace Bitstamp\PublicApi;
 
 use Bitstamp\Common\Transport;
 use Bitstamp\Common\Response;
-use Bitstamp\Models\CurrencyPair;
-use Bitstamp\Models\Endpoint;
 use Bitstamp\PublicApi\Requests\TickerRequest;
+use Bitstamp\PublicApi\Responses\TickerResponse;
 
 class PublicApi
 {
@@ -21,10 +20,18 @@ class PublicApi
 
     private $response;
 
+    /**
+     * @param string $pair
+     * @return Response
+     * @throws \Exception
+     */
     public function getDailyTicker(string $pair): Response
     {
-        $this->request = new TickerRequest();
-        $this->request->setCurrencyPair($pair);
+        $this->request = new TickerRequest($pair);
+        $json = $this->sendRequest();
+        $this->response = new TickerResponse($json);
+
+        return $this->response;
     }
 
     public function getHourlyTicker()

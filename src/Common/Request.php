@@ -18,6 +18,7 @@ abstract class Request
      */
     protected $endpoint;
 
+    protected $controller;
 
     /**
      * Set the default endpoint to the APIv2
@@ -40,6 +41,22 @@ abstract class Request
     }
 
     /**
+     * @return mixed
+     */
+    public function getController()
+    {
+        return $this->controller;
+    }
+
+    /**
+     * @param mixed $controller
+     */
+    public function setController($controller): void
+    {
+        $this->controller = $controller;
+    }
+
+    /**
      * @return string
      */
     public function getEndpoint(): string
@@ -53,4 +70,5 @@ abstract class Request
      * @return string
      */
     abstract public function withUri(): string;
+
 }

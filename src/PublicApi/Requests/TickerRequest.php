@@ -11,17 +11,21 @@ use Bitstamp\Common\Request;
 
 class TickerRequest extends Request
 {
-    protected $controller;
-
     protected $currencyPair;
 
     /**
      * Run the parent constructor and set the uri
+     *
+     * @param string $pair
+     * @return TickerRequest
      */
-    public function __construct()
+    public function __construct(string $pair)
     {
         parent::__construct();
         $this->controller = 'ticker';
+        $this->currencyPair = $pair;
+
+        return $this;
     }
 
     public function getCurrencyPair(): string
@@ -39,16 +43,6 @@ class TickerRequest extends Request
     {
         $this->currencyPair = $pair;
         return $this;
-    }
-
-    /**
-     * Returns the URI we're going to call
-     *
-     * @return string
-     */
-    public function getController(): string
-    {
-        return $this->controller;
     }
 
     /**

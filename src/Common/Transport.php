@@ -23,13 +23,14 @@ class Transport
        $ch = curl_init();
        curl_setopt($ch, CURLOPT_URL, $this->buildUrl($request));
        curl_setopt($ch, CURLOPT_HTTPGET, true);
+       curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
        $result = curl_exec($ch);
        $error = curl_error($ch);
        curl_close($ch);
 
        if ($result !== false) {
-           return Response::createFromJson($result);
+           return $result;
        }
 
        throw new \Exception('Unable to send request: ' . $error);

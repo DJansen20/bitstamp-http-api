@@ -14,9 +14,11 @@ use Bitstamp\PublicApi\Requests\TickerRequest;
 use Bitstamp\PublicApi\Requests\HourlyTickerRequest;
 use Bitstamp\PublicApi\Requests\OrderBookRequest;
 
+use Bitstamp\PublicApi\Requests\TradingPairsInfoRequest;
 use Bitstamp\PublicApi\Responses\TickerResponse;
 use Bitstamp\PublicApi\Responses\HourlyTickerResponse;
 use Bitstamp\PublicApi\Responses\OrderBookResponse;
+use Bitstamp\PublicApi\Responses\TradingPairsInfoResponse;
 
 class PublicApi
 {
@@ -70,12 +72,19 @@ class PublicApi
 
     public function getTransactions()
     {
-
     }
 
+    /**
+     * @return TradingPairsInfoResponse
+     * @throws \Exception
+     */
     public function getTradingPairInfo()
     {
+        $this->request = new TradingPairsInfoRequest();
+        $json = $this->sendRequest();
+        $this->response = new TradingPairsInfoResponse($json);
 
+        return $this->response;
     }
 
     public function getEurUsdConversionRate()

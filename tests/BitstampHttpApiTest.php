@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 class BitstampHttpApiTest extends TestCase
 {
     /**
+     * @covers \Bitstamp\BitstampHttpApi::__constuct
      * @return BitstampHttpApi
      * @throws \Exception
      */
@@ -25,14 +26,14 @@ class BitstampHttpApiTest extends TestCase
     }
 
     /**
+     * @covers \Bitstamp\BitstampHttpApi::PublicApi
      * @return PublicApi
      * @throws \Exception
      */
-    public function testPublicApi(): PublicApi
+    public function testLoadPublicApi(): PublicApi
     {
         $publicApi = BitstampHttpApi::PublicApi();
         $this->assertInstanceOf('Bitstamp\\PublicApi\\PublicApi', $publicApi);
-        var_dump($publicApi);
         return $publicApi;
     }
 }

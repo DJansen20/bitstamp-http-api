@@ -72,4 +72,16 @@ class PublicApiTest extends TestCase
         $response = $publicApi->getTradingPairInfo();
         $this->assertInstanceOf('Bitstamp\\PublicApi\\Responses\\TradingPairsInfoResponse', $response);
     }
+
+    /**
+     * @depends testCanBeConstructed
+     *
+     * @param PublicApi $publicApi
+     * @throws \Exception
+     */
+    public function testGetEurUsdConversionRate(PublicApi $publicApi)
+    {
+        $response = $publicApi->getEurUsdConversionRate();
+        $this->assertInstanceOf('Bitstamp\\PublicApi\\Responses\\EurUsdConversionRateResponse', $response);
+    }
 }

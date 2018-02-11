@@ -10,11 +10,13 @@ namespace Bitstamp\PublicApi;
 use Bitstamp\Common\Transport;
 use Bitstamp\Common\Response;
 
+use Bitstamp\PublicApi\Requests\EurUsdConversionRateRequest;
 use Bitstamp\PublicApi\Requests\TickerRequest;
 use Bitstamp\PublicApi\Requests\HourlyTickerRequest;
 use Bitstamp\PublicApi\Requests\OrderBookRequest;
 
 use Bitstamp\PublicApi\Requests\TradingPairsInfoRequest;
+use Bitstamp\PublicApi\Responses\EurUsdConversionRateResponse;
 use Bitstamp\PublicApi\Responses\TickerResponse;
 use Bitstamp\PublicApi\Responses\HourlyTickerResponse;
 use Bitstamp\PublicApi\Responses\OrderBookResponse;
@@ -87,9 +89,17 @@ class PublicApi
         return $this->response;
     }
 
+    /**
+     * @return EurUsdConversionRateResponse
+     * @throws \Exception
+     */
     public function getEurUsdConversionRate()
     {
+        $this->request = new EurUsdConversionRateRequest();
+        $json = $this->sendRequest();
+        $this->response = new EurUsdConversionRateResponse($json);
 
+        return $this->response;
     }
 
     /**

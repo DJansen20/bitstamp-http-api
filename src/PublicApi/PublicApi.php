@@ -9,10 +9,14 @@ namespace Bitstamp\PublicApi;
 
 use Bitstamp\Common\Transport;
 use Bitstamp\Common\Response;
+
 use Bitstamp\PublicApi\Requests\TickerRequest;
-use Bitstamp\PublicApi\Responses\TickerResponse;
 use Bitstamp\PublicApi\Requests\HourlyTickerRequest;
+use Bitstamp\PublicApi\Requests\OrderBookRequest;
+
+use Bitstamp\PublicApi\Responses\TickerResponse;
 use Bitstamp\PublicApi\Responses\HourlyTickerResponse;
+use Bitstamp\PublicApi\Responses\OrderBookResponse;
 
 class PublicApi
 {
@@ -50,9 +54,18 @@ class PublicApi
         return $this->response;
     }
 
-    public function getOrderBook()
+    /**
+     * @param string $pair
+     * @return Response
+     * @throws \Exception
+     */
+    public function getOrderBook(string $pair): Response
     {
+        $this->request = new OrderBookRequest($pair);
+        $json = $this->sendRequest();
+        $this->response = new OrderBookResponse($json);
 
+        return $this->response;
     }
 
     public function getTransactions()

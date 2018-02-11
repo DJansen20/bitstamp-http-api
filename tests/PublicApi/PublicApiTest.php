@@ -48,4 +48,16 @@ class PublicApiTest extends TestCase
         $response = $publicApi->getHourlyTicker(CurrencyPair::BTCUSD);
         $this->assertInstanceOf('Bitstamp\\PublicApi\\Responses\\HourlyTickerResponse', $response);
     }
+
+    /**
+     * @depends testCanBeConstructed
+     *
+     * @param PublicApi $publicApi
+     * @throws \Exception
+     */
+    public function testGetOrderBook(PublicApi $publicApi)
+    {
+        $response = $publicApi->getOrderBook(CurrencyPair::BTCUSD);
+        $this->assertInstanceOf('Bitstamp\\PublicApi\\Responses\\OrderBookResponse', $response);
+    }
 }

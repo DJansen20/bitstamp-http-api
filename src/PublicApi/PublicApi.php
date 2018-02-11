@@ -14,8 +14,8 @@ use Bitstamp\PublicApi\Requests\EurUsdConversionRateRequest;
 use Bitstamp\PublicApi\Requests\TickerRequest;
 use Bitstamp\PublicApi\Requests\HourlyTickerRequest;
 use Bitstamp\PublicApi\Requests\OrderBookRequest;
-
 use Bitstamp\PublicApi\Requests\TradingPairsInfoRequest;
+
 use Bitstamp\PublicApi\Responses\EurUsdConversionRateResponse;
 use Bitstamp\PublicApi\Responses\TickerResponse;
 use Bitstamp\PublicApi\Responses\HourlyTickerResponse;

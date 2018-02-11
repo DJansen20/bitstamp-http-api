@@ -83,7 +83,7 @@ class TickerResponse extends Response
      * @param mixed $high
      * @return TickerResponse
      */
-    public function setHigh(float $high): TickerResponse
+    private function setHigh(float $high): TickerResponse
     {
         $this->high = $high;
         return $this;
@@ -101,7 +101,7 @@ class TickerResponse extends Response
      * @param mixed $last
      * @return TickerResponse
      */
-    public function setLast(float $last): TickerResponse
+    private function setLast(float $last): TickerResponse
     {
         $this->last = $last;
         return $this;
@@ -119,7 +119,7 @@ class TickerResponse extends Response
      * @param mixed $timestamp
      * @return TickerResponse
      */
-    public function setTimestamp(int $timestamp): TickerResponse
+    private function setTimestamp(int $timestamp): TickerResponse
     {
         $this->timestamp = $timestamp;
         return $this;
@@ -137,7 +137,7 @@ class TickerResponse extends Response
      * @param mixed $bid
      * @return TickerResponse
      */
-    public function setBid(float $bid): TickerResponse
+    private function setBid(float $bid): TickerResponse
     {
         $this->bid = $bid;
         return $this;
@@ -155,7 +155,7 @@ class TickerResponse extends Response
      * @param mixed $vwap
      * @return TickerResponse
      */
-    public function setVwap(float $vwap): TickerResponse
+    private function setVwap(float $vwap): TickerResponse
     {
         $this->vwap = $vwap;
         return $this;
@@ -173,7 +173,7 @@ class TickerResponse extends Response
      * @param mixed $volume
      * @return TickerResponse
      */
-    public function setVolume(float $volume): TickerResponse
+    private function setVolume(float $volume): TickerResponse
     {
         $this->volume = $volume;
         return $this;
@@ -191,7 +191,7 @@ class TickerResponse extends Response
      * @param mixed $low
      * @return TickerResponse
      */
-    public function setLow(float $low): TickerResponse
+    private function setLow(float $low): TickerResponse
     {
         $this->low = $low;
         return $this;
@@ -209,7 +209,7 @@ class TickerResponse extends Response
      * @param mixed $ask
      * @return TickerResponse
      */
-    public function setAsk(float $ask): TickerResponse
+    private function setAsk(float $ask): TickerResponse
     {
         $this->ask = $ask;
         return $this;
@@ -227,7 +227,7 @@ class TickerResponse extends Response
      * @param mixed $open
      * @return TickerResponse
      */
-    public function setOpen(float $open): TickerResponse
+    private function setOpen(float $open): TickerResponse
     {
         $this->open = $open;
         return $this;

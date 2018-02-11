@@ -11,6 +11,8 @@ use Bitstamp\Common\Transport;
 use Bitstamp\Common\Response;
 use Bitstamp\PublicApi\Requests\TickerRequest;
 use Bitstamp\PublicApi\Responses\TickerResponse;
+use Bitstamp\PublicApi\Requests\HourlyTickerRequest;
+use Bitstamp\PublicApi\Responses\HourlyTickerResponse;
 
 class PublicApi
 {
@@ -34,9 +36,18 @@ class PublicApi
         return $this->response;
     }
 
-    public function getHourlyTicker()
+    /**
+     * @param string $pair
+     * @return Response
+     * @throws \Exception
+     */
+    public function getHourlyTicker(string $pair): Response
     {
+        $this->request = new HourlyTickerRequest($pair);
+        $json = $this->sendRequest();
+        $this->response = new HourlyTickerResponse($json);
 
+        return $this->response;
     }
 
     public function getOrderBook()

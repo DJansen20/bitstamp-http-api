@@ -23,7 +23,7 @@ class TransportTest extends TestCase
     public function testCanBeConstructed(): Transport
     {
         $transport = new Transport();
-        $this->assertInstanceOf('Bitstamp\\Common\\Request', $transport);
+        $this->assertInstanceOf('Bitstamp\\Common\\Transport', $transport);
         return $transport;
     }
 }

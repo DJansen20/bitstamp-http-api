@@ -5,7 +5,7 @@
  * @license: MIT
  */
 
-namespace Bitstamp\PublicApi\Ticker;
+namespace Bitstamp\PublicApi\Requests;
 
 use Bitstamp\Common\Request;
 
@@ -22,6 +22,11 @@ class TickerRequest extends Request
     {
         parent::__construct();
         $this->controller = 'ticker';
+    }
+
+    public function getCurrencyPair(): string
+    {
+        return $this->currencyPair;
     }
 
     /**

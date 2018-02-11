@@ -5,13 +5,13 @@
  * @license: MIT
  */
 
-namespace Bitstamp;
+namespace Bitstamp\PublicApi;
 
 use Bitstamp\Common\Transport;
 use Bitstamp\Common\Response;
 use Bitstamp\Models\CurrencyPair;
 use Bitstamp\Models\Endpoint;
-use Bitstamp\PublicApi\Ticker\TickerRequest;
+use Bitstamp\PublicApi\Requests\TickerRequest;
 
 class PublicApi
 {

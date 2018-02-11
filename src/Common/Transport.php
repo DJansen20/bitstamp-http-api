@@ -7,19 +7,42 @@
 
 namespace Bitstamp\Common;
 
-use GuzzleHttp\Client;
+use Bitstamp\Models\Endpoint;
 
 class Transport
 {
-    public function __construct()
-    {
-    }
-
+    /**
+     * Perform the API call and create a response instance from the result
+     *
+     * @param Request $request
+     * @return string
+     * @throws \Exception
+     */
     public function send(Request $request): string
     {
-        $client = new Client(['base_uri' => $request->getEndpoint()]);
-        $response = $client->get($request->createUri());
+       $ch = curl_init();
+       curl_setopt($ch, CURLOPT_URL, $this->buildUrl($request));
+       curl_setopt($ch, CURLOPT_HTTPGET, true);
+       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+       $result = curl_exec($ch);
+       $error = curl_error($ch);
+       curl_close($ch);
 
-        return $response;
+       if ($result !== false) {
+           return Response::createFromJson($result);
+       }
+
+       throw new \Exception('Unable to send request: ' . $error);
+    }
+
+    /**
+     * Build the URL to call from the request object
+     *
+     * @param Request $request
+     * @return string
+     */
+    protected function buildUrl(Request $request): string
+    {
+        return sprintf('%s%s', Endpoint::APIV2, $request->withUri());
     }
 }

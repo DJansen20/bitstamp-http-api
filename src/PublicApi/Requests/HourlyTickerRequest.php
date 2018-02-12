@@ -17,13 +17,14 @@ class HourlyTickerRequest extends Request
      * Run the parent constructor and set the uri
      *
      * @param string $pair
+     * @throws \Bitstamp\Exception\BitstampEndpointException
      * @return HourlyTickerRequest
      */
     public function __construct(string $pair)
     {
-        parent::__construct();
         $this->controller = 'ticker_hour';
         $this->currencyPair = $pair;
+        parent::__construct();
 
         return $this;
     }

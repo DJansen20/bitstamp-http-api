@@ -16,14 +16,13 @@ class EurUsdConversionRateRequest extends Request
     /**
      * Run the parent constructor and set the uri
      *
-     * @return EurUsdConversionRateRequest
+     * @throws \Bitstamp\Exception\BitstampEndpointException
      */
     public function __construct()
     {
-        parent::__construct();
         $this->controller = 'eur_usd';
-
-        return $this;
+        $this->setV1Endpoint();
+        parent::__construct();
     }
 
     /**

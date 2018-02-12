@@ -47,7 +47,7 @@ abstract class Request
         'ticker',
         'ticker_hour',
         'order_book',
-        'trading_pairs_info',
+        'trading-pairs-info',
         'transactions'
     ];
 
@@ -58,7 +58,7 @@ abstract class Request
      */
     public function __construct()
     {
-        if ($this->endpoint !== Endpoint::API || $this->endpoint !== Endpoint::APIV2) {
+        if ($this->endpoint !== Endpoint::API && $this->endpoint !== Endpoint::APIV2) {
             $this->setV2Endpoint();
         }
     }

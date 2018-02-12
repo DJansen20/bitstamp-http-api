@@ -93,7 +93,6 @@ class PublicApiTest extends TestCase
      */
     public function testGetEurUsdConversionRate(PublicApi $publicApi)
     {
-        $this->markTestIncomplete('Functionality not fully functional yet');
         $response = $publicApi->getEurUsdConversionRate();
         $this->assertInstanceOf('Bitstamp\\PublicApi\\Responses\\EurUsdConversionRateResponse', $response);
     }

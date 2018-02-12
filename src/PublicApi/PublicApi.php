@@ -7,6 +7,7 @@
 
 namespace Bitstamp\PublicApi;
 
+use Bitstamp\Common\Request;
 use Bitstamp\Common\Transport;
 use Bitstamp\Common\Response;
 
@@ -26,10 +27,19 @@ use Bitstamp\PublicApi\Responses\TransactionsResponse;
 
 class PublicApi
 {
+    /**
+     * @var Request $request
+     */
     private $request;
 
+    /**
+     * @var Transport $transport
+     */
     private $transport;
 
+    /**
+     * @var Response $response
+     */
     private $response;
 
     /**

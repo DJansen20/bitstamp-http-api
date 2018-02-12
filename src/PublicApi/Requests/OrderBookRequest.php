@@ -17,13 +17,13 @@ class OrderBookRequest extends Request
      * Run the parent constructor and set the uri
      *
      * @param string $pair
-     * @return OrderBookRequest
+     * @throws \Bitstamp\Exception\BitstampEndpointException
      */
     public function __construct(string $pair)
     {
-        parent::__construct();
         $this->controller = 'order_book';
         $this->currencyPair = $pair;
+        parent::__construct();
 
         return $this;
     }

@@ -17,15 +17,13 @@ class TransactionsRequest extends Request
      * Run the parent constructor and set the uri
      *
      * @param string $pair
-     * @return TransactionsRequest
+     * @throws \Bitstamp\Exception\BitstampEndpointException
      */
     public function __construct(string $pair)
     {
-        parent::__construct();
         $this->controller = 'transactions';
         $this->currencyPair = $pair;
-
-        return $this;
+        parent::__construct();
     }
 
     public function getCurrencyPair(): string

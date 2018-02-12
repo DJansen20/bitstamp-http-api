@@ -16,14 +16,12 @@ class TradingPairsInfoRequest extends Request
     /**
      * Run the parent constructor and set the uri
      *
-     * @return TradingPairsInfoRequest
+     * @throws \Bitstamp\Exception\BitstampEndpointException
      */
     public function __construct()
     {
-        parent::__construct();
         $this->controller = 'trading-pairs-info';
-
-        return $this;
+        parent::__construct();
     }
 
     /**

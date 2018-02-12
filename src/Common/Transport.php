@@ -7,8 +7,6 @@
 
 namespace Bitstamp\Common;
 
-use Bitstamp\Models\Endpoint;
-
 class Transport
 {
     /**
@@ -45,6 +43,6 @@ class Transport
      */
     protected function buildUrl(Request $request): string
     {
-        return sprintf('%s%s', Endpoint::APIV2, $request->withUri());
+        return sprintf('%s%s', $request->getEndpoint(), $request->withUri());
     }
 }

@@ -8,6 +8,7 @@
 namespace Bitstamp\PublicApi\Requests;
 
 use Bitstamp\Common\Request;
+use Bitstamp\Exception\BitstampEndpointException;
 
 class TickerRequest extends Request
 {
@@ -17,17 +18,18 @@ class TickerRequest extends Request
      * Run the parent constructor and set the uri
      *
      * @param string $pair
-     * @return TickerRequest
+     * @throws BitstampEndpointException
      */
     public function __construct(string $pair)
     {
-        parent::__construct();
         $this->controller = 'ticker';
         $this->currencyPair = $pair;
-
-        return $this;
+        parent::__construct();
     }
 
+    /**
+     * @return string
+     */
     public function getCurrencyPair(): string
     {
         return $this->currencyPair;

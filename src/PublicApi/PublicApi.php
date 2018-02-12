@@ -86,12 +86,13 @@ class PublicApi
 
     /**
      * @param string $pair
+     * @param string $time
      * @return Response
      * @throws \Exception
      */
-    public function getTransactions(string $pair): Response
+    public function getTransactions(string $pair, string $time = 'hour'): Response
     {
-        $this->request = new TransactionsRequest($pair);
+        $this->request = new TransactionsRequest($pair, $time);
         $json = $this->sendRequest();
         $this->response = new TransactionsResponse($json);
 

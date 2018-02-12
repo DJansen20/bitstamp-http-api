@@ -69,7 +69,7 @@ class PublicApiTest extends TestCase
      */
     public function testGetTransactions(PublicApi $publicApi)
     {
-        $response = $publicApi->getTransactions(CurrencyPair::BTCUSD);
+        $response = $publicApi->getTransactions(CurrencyPair::BTCUSD, 'minute');
         $this->assertInstanceOf('Bitstamp\\PublicApi\\Responses\\TransactionsResponse', $response);
     }
 

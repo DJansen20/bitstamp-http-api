@@ -11,8 +11,6 @@ use Bitstamp\Common\Request;
 
 class TradingPairsInfoRequest extends Request
 {
-    protected $currencyPair;
-
     /**
      * Run the parent constructor and set the uri
      *

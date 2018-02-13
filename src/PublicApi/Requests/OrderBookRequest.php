@@ -11,6 +11,9 @@ use Bitstamp\Common\Request;
 
 class OrderBookRequest extends Request
 {
+    /**
+     * @var string $currencyPair
+     */
     protected $currencyPair;
 
     /**
@@ -28,6 +31,11 @@ class OrderBookRequest extends Request
         return $this;
     }
 
+    /**
+     * Gets the currently set currency pair
+     *
+     * @return string
+     */
     public function getCurrencyPair(): string
     {
         return $this->currencyPair;

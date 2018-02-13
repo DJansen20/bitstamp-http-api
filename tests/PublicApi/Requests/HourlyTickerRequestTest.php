@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 use Bitstamp\Models\CurrencyPair;
 use Bitstamp\PublicApi\Requests\HourlyTickerRequest;
 
-class HourlyHourlyTickerRequestTest extends TestCase
+class HourlyTickerRequestTest extends TestCase
 {
     /**
      * Check if request can be constructed

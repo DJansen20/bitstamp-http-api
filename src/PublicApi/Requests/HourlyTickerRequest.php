@@ -11,6 +11,9 @@ use Bitstamp\Common\Request;
 
 class HourlyTickerRequest extends Request
 {
+    /**
+     * @var string $currencyPair
+     */
     protected $currencyPair;
 
     /**
@@ -29,6 +32,11 @@ class HourlyTickerRequest extends Request
         return $this;
     }
 
+    /**
+     * Get the currently set currency pair
+     *
+     * @return string
+     */
     public function getCurrencyPair(): string
     {
         return $this->currencyPair;

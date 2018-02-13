@@ -12,6 +12,9 @@ use Bitstamp\Exception\BitstampEndpointException;
 
 class TickerRequest extends Request
 {
+    /**
+     * @var string $currencyPair
+     */
     protected $currencyPair;
 
     /**

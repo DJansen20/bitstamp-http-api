@@ -12,7 +12,7 @@ use Bitstamp\Common\Response;
 class TransactionsResponse extends Response
 {
     /**
-     * @var $transactions[]
+     * @var array $transactions[]
      */
     public $transactions;
 
@@ -28,9 +28,9 @@ class TransactionsResponse extends Response
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getTransactions()
+    public function getTransactions(): array
     {
         return $this->transactions;
     }
@@ -39,7 +39,7 @@ class TransactionsResponse extends Response
      * @param mixed $transactions
      * @return TransactionsResponse
      */
-    private function setTransactions($transactions): TransactionsResponse
+    private function setTransactions(array $transactions): TransactionsResponse
     {
         $this->transactions = $transactions;
         return $this;

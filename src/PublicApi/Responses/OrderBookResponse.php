@@ -22,6 +22,11 @@ class OrderBookResponse extends Response
     public $bids;
 
     /**
+     * @var $asks[]
+     */
+    public $asks;
+
+    /**
      * OrderBookResponse constructor.
      * @param string $json
      */
@@ -30,42 +35,61 @@ class OrderBookResponse extends Response
         $data = json_decode($json, true);
         $this
             ->setTimestamp($data['timestamp'])
-            ->setBids($data['bids']);
+            ->setBids($data['bids'])
+            ->setAsks($data['asks']);
     }
 
     /**
-     * @return mixed
+     * @return integer
      */
-    public function getTimestamp()
+    public function getTimestamp(): int
     {
         return $this->timestamp;
     }
 
     /**
-     * @param mixed $timestamp
+     * @param integer $timestamp
      * @return OrderBookResponse
      */
-    private function setTimestamp($timestamp): OrderBookResponse
+    private function setTimestamp(int $timestamp): OrderBookResponse
     {
         $this->timestamp = $timestamp;
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getBids()
+    public function getBids(): array
     {
         return $this->bids;
     }
 
     /**
-     * @param mixed $bids
+     * @param array $bids
      * @return OrderBookResponse
      */
-    private function setBids($bids): OrderBookResponse
+    private function setBids(array $bids): OrderBookResponse
     {
         $this->bids = $bids;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAsks(): array
+    {
+        return $this->asks;
+    }
+
+    /**
+     * @param array $asks
+     * @return OrderBookResponse
+     */
+    private function setAsks(array $asks): OrderBookResponse
+    {
+        $this->asks = $asks;
         return $this;
     }
 }

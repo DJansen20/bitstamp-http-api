@@ -110,7 +110,7 @@ class HourlyTickerResponse extends Response
     /**
      * @return mixed
      */
-    public function getTimestamp(): integer
+    public function getTimestamp(): int
     {
         return $this->timestamp;
     }

@@ -12,7 +12,7 @@ use Bitstamp\Common\Response;
 class TradingPairsInfoResponse extends Response
 {
     /**
-     * @var $tradingPairs[]
+     * @var array $tradingPairs[]
      */
     public $tradingPairs;
 
@@ -28,18 +28,18 @@ class TradingPairsInfoResponse extends Response
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getTradingPairs()
+    public function getTradingPairs(): array
     {
         return $this->tradingPairs;
     }
 
     /**
-     * @param mixed $tradingPairs
+     * @param array $tradingPairs
      * @return TradingPairsInfoResponse
      */
-    private function setTradingPairs($tradingPairs): TradingPairsInfoResponse
+    private function setTradingPairs(array $tradingPairs): TradingPairsInfoResponse
     {
         $this->tradingPairs = $tradingPairs;
         return $this;

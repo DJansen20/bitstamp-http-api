@@ -7,28 +7,28 @@
 
 namespace Bitstamp\Tests\PublicApi\Responses;
 
-use Bitstamp\PublicApi\Responses\TickerResponse;
+use Bitstamp\PublicApi\Responses\HourlyTickerResponse;
 use PHPUnit\Framework\TestCase;
 
-class TickerResponseTest extends TestCase
+class HourlyTickerResponseTest extends TestCase
 {
     /**
      * Test data
      */
     const TEST = [
-        'high' => 1292.00,
-        'last' => 1228.45,
-        'timestamp' => 1518549300,
-        'bid' => 1228.66,
-        'vwap' => 1240.85,
-        'volume' => 3417.46690151,
-        'low' => 1195.00,
-        'ask' => 1230.00,
-        'open' => 1283.00
+        'high' => 1241.30,
+        'last' => 1232.77,
+        'timestamp' => 1518548170,
+        'bid' => 1232.26,
+        'vwap' => 1237.47,
+        'volume' => 38.2800217,
+        'low' => 1232.77,
+        'ask' => 1232.77,
+        'open' => 1234.20
     ];
 
     /**
-     * @covers \Bitstamp\PublicApi\Responses\TickerResponse::__construct
+     * @covers \Bitstamp\PublicApi\Responses\HourlyTickerResponse::__construct
      * @covers \Bitstamp\PublicApi\Responses\TickerResponse::setHigh
      * @covers \Bitstamp\PublicApi\Responses\TickerResponse::setLast
      * @covers \Bitstamp\PublicApi\Responses\TickerResponse::setTimestamp
@@ -39,120 +39,120 @@ class TickerResponseTest extends TestCase
      * @covers \Bitstamp\PublicApi\Responses\TickerResponse::setAsk
      * @covers \Bitstamp\PublicApi\Responses\TickerResponse::setOpen
      *
-     * @return TickerResponse
+     * @return HourlyTickerResponse
      * @throws \Exception
      */
-    public function testCanBeConstructed(): TickerResponse
+    public function testCanBeConstructed(): HourlyTickerResponse
     {
-        $response = new TickerResponse(json_encode(self::TEST));
-        $this->assertInstanceOf('Bitstamp\\PublicApi\\Responses\\TickerResponse', $response);
+        $response = new HourlyTickerResponse(json_encode(self::TEST));
+        $this->assertInstanceOf('Bitstamp\\PublicApi\\Responses\\HourlyTickerResponse', $response);
 
         return $response;
     }
 
     /**
      * @depends testCanBeConstructed
-     * @covers \Bitstamp\PublicApi\Responses\TickerResponse::getHigh
+     * @covers \Bitstamp\PublicApi\Responses\HourlyTickerResponse::getHigh
      *
-     * @param TickerResponse $response
+     * @param HourlyTickerResponse $response
      * @throws \Exception
      */
-    public function testGetHigh(TickerResponse $response) :void
+    public function testGetHigh(HourlyTickerResponse $response) :void
     {
         $this->assertEquals(self::TEST['high'], $response->getHigh());
     }
 
     /**
      * @depends testCanBeConstructed
-     * @covers \Bitstamp\PublicApi\Responses\TickerResponse::getLast
+     * @covers \Bitstamp\PublicApi\Responses\HourlyTickerResponse::getLast
      *
-     * @param TickerResponse $response
+     * @param HourlyTickerResponse $response
      * @throws \Exception
      */
-    public function testGetLast(TickerResponse $response): void
+    public function testGetLast(HourlyTickerResponse $response): void
     {
         $this->assertEquals(self::TEST['last'], $response->getLast());
     }
 
     /**
      * @depends testCanBeConstructed
-     * @covers \Bitstamp\PublicApi\Responses\TickerResponse::getTimestamp
+     * @covers \Bitstamp\PublicApi\Responses\HourlyTickerResponse::getTimestamp
      *
-     * @param TickerResponse $response
+     * @param HourlyTickerResponse $response
      * @throws \Exception
      */
-    public function testGetTimestamp(TickerResponse $response): void
+    public function testGetTimestamp(HourlyTickerResponse $response): void
     {
         $this->assertEquals(self::TEST['timestamp'], $response->getTimestamp());
     }
 
     /**
      * @depends testCanBeConstructed
-     * @covers \Bitstamp\PublicApi\Responses\TickerResponse::getBid
+     * @covers \Bitstamp\PublicApi\Responses\HourlyTickerResponse::getBid
      *
-     * @param TickerResponse $response
+     * @param HourlyTickerResponse $response
      * @throws \Exception
      */
-    public function testGetBid(TickerResponse $response): void
+    public function testGetBid(HourlyTickerResponse $response): void
     {
         $this->assertEquals(self::TEST['bid'], $response->getBid());
     }
 
     /**
      * @depends testCanBeConstructed
-     * @covers \Bitstamp\PublicApi\Responses\TickerResponse::getVwap
+     * @covers \Bitstamp\PublicApi\Responses\HourlyTickerResponse::getVwap
      *
-     * @param TickerResponse $response
+     * @param HourlyTickerResponse $response
      * @throws \Exception
      */
-    public function testGetVwap(TickerResponse $response): void
+    public function testGetVwap(HourlyTickerResponse $response): void
     {
         $this->assertEquals(self::TEST['vwap'], $response->getVwap());
     }
 
     /**
      * @depends testCanBeConstructed
-     * @covers \Bitstamp\PublicApi\Responses\TickerResponse::getVolume
+     * @covers \Bitstamp\PublicApi\Responses\HourlyTickerResponse::getVolume
      *
-     * @param TickerResponse $response
+     * @param HourlyTickerResponse $response
      * @throws \Exception
      */
-    public function testGetVolume(TickerResponse $response): void
+    public function testGetVolume(HourlyTickerResponse $response): void
     {
         $this->assertEquals(self::TEST['volume'], $response->getVolume());
     }
 
     /**
      * @depends testCanBeConstructed
-     * @covers \Bitstamp\PublicApi\Responses\TickerResponse::getLow
+     * @covers \Bitstamp\PublicApi\Responses\HourlyTickerResponse::getLow
      *
-     * @param TickerResponse $response
+     * @param HourlyTickerResponse $response
      * @throws \Exception
      */
-    public function testGetLow(TickerResponse $response): void
+    public function testGetLow(HourlyTickerResponse $response): void
     {
         $this->assertEquals(self::TEST['low'], $response->getLow());
     }
 
     /**
      * @depends testCanBeConstructed
-     * @covers \Bitstamp\PublicApi\Responses\TickerResponse::getAsk
+     * @covers \Bitstamp\PublicApi\Responses\HourlyTickerResponse::getAsk
      *
-     * @param TickerResponse $response
+     * @param HourlyTickerResponse $response
      * @throws \Exception
      */
-    public function testGetAsk(TickerResponse $response): void
+    public function testGetAsk(HourlyTickerResponse $response): void
     {
         $this->assertEquals(self::TEST['ask'], $response->getAsk());
     }
     /**
      * @depends testCanBeConstructed
-     * @covers \Bitstamp\PublicApi\Responses\TickerResponse::getOpen
+     * @covers \Bitstamp\PublicApi\Responses\HourlyTickerResponse::getOpen
      *
-     * @param TickerResponse $response
+     * @param HourlyTickerResponse $response
      * @throws \Exception
      */
-    public function testGetOpen(TickerResponse $response): void
+    public function testGetOpen(HourlyTickerResponse $response): void
     {
         $this->assertEquals(self::TEST['open'], $response->getOpen());
     }

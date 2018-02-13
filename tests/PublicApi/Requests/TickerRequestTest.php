@@ -5,7 +5,7 @@
  * @license: MIT
  */
 
-namespace Bitstamp\Tests\Request;
+namespace Bitstamp\Tests\PublicApi\Requests;
 
 use PHPUnit\Framework\TestCase;
 use Bitstamp\Models\CurrencyPair;

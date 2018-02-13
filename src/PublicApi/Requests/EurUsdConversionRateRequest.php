@@ -11,6 +11,9 @@ use Bitstamp\Common\Request;
 
 class EurUsdConversionRateRequest extends Request
 {
+    /**
+     * @var string $currencyPair
+     */
     protected $currencyPair;
 
     /**

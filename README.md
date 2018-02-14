@@ -13,6 +13,10 @@ composer require djansen20/bitstamp-http-api dev-master
 ```
 
 ## Usage
+In order to use this library include the following namespace into your project
+```php
+use Bitstamp\BitstampHttpApi;
+```
 
 ###Request limit
 Bitstamp has implemented a request limit to prevent one IP flooding their servers.
@@ -287,4 +291,4 @@ object(Bitstamp\PublicApi\Responses\EurUsdConversionRateResponse)#63 (2) {
 To be implemented
 
 ## License
-See [License](LICENSE.md)
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

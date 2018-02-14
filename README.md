@@ -51,7 +51,19 @@ $api = BitstampHttpApi::PublicApi();
 
 Now you can start requesting data from the API.
 #### Daily ticker
-Returns ticker data of the past day
+Returns ticker data of the past day. The entry has the following values.
+
+|Property   | Description                   |
+|----------:|:-----------------------------|
+| Last      | Last BTC price                |
+| High      | Last 24 hours price high      |
+| Low       | Last 24 hours price low       |
+| Vwap      | Last 24 hours volume [weighted average price](https://en.wikipedia.org/wiki/Volume-weighted_average_price) |
+| Volume    | Last 24 hours volume          |
+| Bid       | Highest buy order             |
+| Ask       | Lowest sell order             |
+| Timestamp | Unix timestamp date and time. |
+| Open      | First price of the day.       |
 
 ```php
 $api->getDailyTicker($pair);

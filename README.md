@@ -51,56 +51,243 @@ $api = BitstampHttpApi::PublicApi();
 
 Now you can start requesting data from the API.
 #### Daily ticker
-Returns ticker data of the past day. The entry has the following values.
+Returns ticker data of the past day. The returned object has the following properties
+```text
+Last - Last BTC price                
+High - Last 24 hours price high      
+Low - Last 24 hours price low       
+Vwap - Last 24 hours volume weighted average price
+Volume - Last 24 hours volume          
+Bid - Highest buy order
+Ask - Lowest sell order
+Timestamp - Unix timestamp date and time
+Open - First price of the day
+```
 
-|Property   | Description                   |
-|----------:|:-----------------------------|
-| Last      | Last BTC price                |
-| High      | Last 24 hours price high      |
-| Low       | Last 24 hours price low       |
-| Vwap      | Last 24 hours volume [weighted average price](https://en.wikipedia.org/wiki/Volume-weighted_average_price) |
-| Volume    | Last 24 hours volume          |
-| Bid       | Highest buy order             |
-| Ask       | Lowest sell order             |
-| Timestamp | Unix timestamp date and time. |
-| Open      | First price of the day.       |
-
+Example request
 ```php
-$api->getDailyTicker($pair);
+$api = BitstampHttpApi::PublicApi();
+$api->getDailyTicker(CurrencyPair::BTCUSD);
+```
+
+Example response
+```php
+object(Bitstamp\PublicApi\Responses\TickerResponse)#68 (9) {
+  ["high"]=>
+  float(9380)
+  ["last"]=>
+  float(9260.99)
+  ["timestamp"]=>
+  int(1518634427)
+  ["bid"]=>
+  float(9254)
+  ["vwap"]=>
+  float(8986.35)
+  ["volume"]=>
+  float(16019.68608281)
+  ["low"]=>
+  float(8461.38)
+  ["ask"]=>
+  float(9260.93)
+  ["open"]=>
+  float(8504.57)
+}
 ```
 
 #### Hourly ticker
 Returns ticker data of the past hour
+```text
+Last - Last BTC price                
+High - Last hour price high      
+Low - Last hour price low       
+Vwap - Last hour volume weighted average price
+Volume - Last hour volume          
+Bid - Highest buy order
+Ask - Lowest sell order
+Timestamp - Unix timestamp date and time
+Open - First price of the hour
+```
 
+Example request
 ```php
-$api->getHourlyTicker($pair);
+$api = BitstampHttpApi::PublicApi();
+$api->getHourlyTicker(CurrencyPair::BTCUSD);
+```
+
+Example response
+```php
+object(Bitstamp\PublicApi\Responses\HourlyTickerResponse)#31 (9) {
+  ["high"]=>
+  float(9380)
+  ["last"]=>
+  float(9312.73)
+  ["timestamp"]=>
+  int(1518634624)
+  ["bid"]=>
+  float(9300.38)
+  ["vwap"]=>
+  float(9307.18)
+  ["volume"]=>
+  float(875.26702747)
+  ["low"]=>
+  float(9230)
+  ["ask"]=>
+  float(9312.72)
+  ["open"]=>
+  float(9319.99)
+}
 ```
 
 #### Orderbook
 Returns an object with "bids" and "asks". 
 Each is a list of open orders and each order is represented as a list holding the price and the amount.
+
+Example request
 ```php
-$api->getOrderBook($pair);
+$api = BitstampHttpApi::PublicApi();
+$api->getOrderBook(CurrencyPair::BTCUSD);
 ```
 
-#### Transactions
-Returns an object with a descending list of transaction.
+Example response
 ```php
-$api->getTransactions($pair);
+object(Bitstamp\PublicApi\Responses\OrderbookResponse)#48 (3) {
+  ["high"]=>
+  int(1518634712)
+  ["bids"]=>
+  array(...)
+  ["asks"]=>
+  array(...)
+}
+```
+#### Transactions
+Returns an object with a descending list of transaction. Every transaction array contains:
+```text
+date - Unix timestamp date and time
+tid - Transaction ID
+price - BTC price
+amount - BTC amount
+type - 0 (buy) or 1 (sell)
+```
+
+Example request
+```php
+$api = BitstampHttpApi::PublicApi();
+$api->getTransactions(CurrencyPair::BCHEUR, minute);
+```
+
+Example response
+```php
+object(Bitstamp\PublicApi\Responses\TransactionsResponse)#68 (1) {
+  ["transactions"]=>
+  array(2) {
+    [0]=>
+    array(5) {
+      ["date"]=>
+      string(10) "1518635036"
+      ["tid"]=>
+      string(8) "54709960"
+      ["price"]=>
+      string(7) "1080.00"
+      ["type"]=>
+      string(1) "0"
+      ["amount"]=>
+      string(10) "0.12830413"
+    }
+    [1]=>
+    array(5) {
+      ["date"]=>
+      string(10) "1518635033"
+      ["tid"]=>
+      string(8) "54709957"
+      ["price"]=>
+      string(7) "1080.00"
+      ["type"]=>
+      string(1) "0"
+      ["amount"]=>
+      string(10) "0.01508434"
+    }
+  }
+}
 ```
 
 #### Get trading pairs
-Returns an object with a list of trading pairs.
+Returns an object with a list of trading pairs. Every trading pair array contains
+```text
+name - Trading pair
+url_symbol - URL symbol of trading pair
+base_decimals - Decimal precision for base currency (BTC/USD - base: BTC)
+counter_decimals - Decimal precision for counter currency (BTC/USD - counter: USD)
+minimum_order - Minimum order size
+trading - Trading engine status (Enabled/Disabled)
+description - Trading pair description
+```
 
+Example request
 ```php
+$api = BitstampHttpApi::PublicApi();
 $api->getTradingPairInfo();
+```
+Example response
+```php
+object(Bitstamp\PublicApi\Responses\TradingPairsInfoResponse)#31 (1) {
+  ["tradingPairs"]=>
+  array(15) {
+    [0]=>
+    array(7) {
+      ["base_decimals"]=>
+      int(8)
+      ["minimum_order"]=>
+      string(7) "5.0 USD"
+      ["name"]=>
+      string(7) "LTC/USD"
+      ["counter_decimals"]=>
+      int(2)
+      ["trading"]=>
+      string(7) "Enabled"
+      ["url_symbol"]=>
+      string(6) "ltcusd"
+      ["description"]=>
+      string(22) "Litecoin / U.S. dollar"
+    }
+    [1]=>
+    array(7) {
+      ["base_decimals"]=>
+      int(8)
+      ["minimum_order"]=>
+      string(7) "5.0 USD"
+      ["name"]=>
+      string(7) "ETH/USD"
+      ["counter_decimals"]=>
+      int(2)
+      ["trading"]=>
+      string(7) "Enabled"
+      ["url_symbol"]=>
+      string(6) "ethusd"
+      ["description"]=>
+      string(19) "Ether / U.S. dollar"
+    }
+    ...
+  }
+}
 ```
 
 #### EUR / USD conversion rate
 Check the current EUR / USD conversion rate
 
+Example request
 ```php
+$api = BitstampHttpApi::PublicApi();
 $api->getEurUsdConversionRate();
+```
+
+Example response
+```php
+object(Bitstamp\PublicApi\Responses\EurUsdConversionRateResponse)#63 (2) {
+  ["buy"]=>
+  float(1.2369)
+  ["sell"]=>
+  float(1.2267)
+}
 ```
 
 ### Private methods

@@ -18,7 +18,7 @@ In order to use this library include the following namespace into your project
 use Bitstamp\BitstampHttpApi;
 ```
 
-###Request limit
+### Request limit
 Bitstamp has implemented a request limit to prevent one IP flooding their servers.
 When using this package make sure you limit your calls to 600 requests per 10 minutes.
 Or risk getting your IP banned.

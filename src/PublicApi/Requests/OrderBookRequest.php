@@ -8,6 +8,8 @@
 namespace Bitstamp\PublicApi\Requests;
 
 use Bitstamp\Common\Request;
+use Bitstamp\Exception\BitstampParameterException;
+use Bitstamp\Models\CurrencyPair;
 
 class OrderBookRequest extends Request
 {
@@ -21,14 +23,13 @@ class OrderBookRequest extends Request
      *
      * @param string $pair
      * @throws \Bitstamp\Exception\BitstampEndpointException
+     * @throws BitstampParameterException
      */
     public function __construct(string $pair)
     {
         $this->controller = 'order_book';
-        $this->currencyPair = $pair;
+        $this->setCurrencyPair($pair);
         parent::__construct();
-
-        return $this;
     }
 
     /**
@@ -46,10 +47,16 @@ class OrderBookRequest extends Request
      *
      * @param string $pair
      * @return OrderBookRequest
+     * @throws BitstampParameterException
      */
     public function setCurrencyPair(string $pair): self
     {
-        $this->currencyPair = $pair;
+        if (in_array($pair, CurrencyPair::CURRENCYPAIR_MAPPER)
+            && $pair === CurrencyPair::CURRENCYPAIR_MAPPER[$pair]) {
+            $this->currencyPair = $pair;
+        } else {
+            throw new BitstampParameterException('Invalid currency pair given');
+        }
         return $this;
     }
 

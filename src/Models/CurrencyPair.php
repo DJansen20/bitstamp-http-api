@@ -68,4 +68,22 @@ class CurrencyPair
     const BCHUSD = 'bchusd';
     const BCHEUR = 'bcheur';
     const BCHBTC = 'bchbtc';
+
+    const CURRENCYPAIR_MAPPER = [
+        'btcusd' => self::BTCUSD,
+        'btceur' => self::BTCEUR,
+        'eurusd' => self::EURUSD,
+        'xrpusd' => self::XRPUSD,
+        'xrpeur' => self::XRPEUR,
+        'xrpbtc' => self::XRPBTC,
+        'ltcusd' => self::LTCUSD,
+        'ltceur' => self::LTCEUR,
+        'ltcbtc' => self::LTCBTC,
+        'ethusd' => self::ETHUSD,
+        'etheur' => self::ETHEUR,
+        'ethbtc' => self::ETHBTC,
+        'bchusd' => self::BCHUSD,
+        'bcheur' => self::BCHEUR,
+        'bchbtc' => self::BCHBTC
+    ];
 }

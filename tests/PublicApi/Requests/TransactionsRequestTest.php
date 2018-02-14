@@ -31,6 +31,28 @@ class TransactionsRequestTest extends TestCase
     }
 
     /**
+     * @throws \Bitstamp\Exception\BitstampEndpointException
+     * @throws \Bitstamp\Exception\BitstampParameterException
+     * @expectedException \Bitstamp\Exception\BitstampParameterException
+     */
+    public function testConstructWithInvalidCurrencyPair(): void
+    {
+        $request = new TransactionsRequest('invalid');
+        unset($request);
+    }
+
+    /**
+     * @throws \Bitstamp\Exception\BitstampEndpointException
+     * @throws \Bitstamp\Exception\BitstampParameterException
+     * @expectedException \Bitstamp\Exception\BitstampParameterException
+     */
+    public function testConstructWithInvalidTime(): void
+    {
+        $request = new TransactionsRequest('bchbtc', 'invalid');
+        unset($request);
+    }
+
+    /**
      * @depends testCanBeConstructed
      * @covers \Bitstamp\PublicApi\Requests\TransactionsRequest::getCurrencyPair
      *

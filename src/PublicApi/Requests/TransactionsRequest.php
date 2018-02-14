@@ -8,6 +8,8 @@
 namespace Bitstamp\PublicApi\Requests;
 
 use Bitstamp\Common\Request;
+use Bitstamp\Exception\BitstampParameterException;
+use Bitstamp\Models\CurrencyPair;
 
 class TransactionsRequest extends Request
 {
@@ -36,12 +38,13 @@ class TransactionsRequest extends Request
      * @param string $pair
      * @param string $time
      * @throws \Bitstamp\Exception\BitstampEndpointException
+     * @throws BitstampParameterException
      */
     public function __construct(string $pair, string $time = 'hour')
     {
         $this->controller = 'transactions';
         $this->setTime($time);
-        $this->currencyPair = $pair;
+        $this->setCurrencyPair($pair);
         parent::__construct();
     }
 
@@ -58,10 +61,16 @@ class TransactionsRequest extends Request
      *
      * @param string $pair
      * @return TransactionsRequest
+     * @throws BitstampParameterException
      */
     public function setCurrencyPair(string $pair): self
     {
-        $this->currencyPair = $pair;
+        if (in_array($pair, CurrencyPair::CURRENCYPAIR_MAPPER)
+            && $pair === CurrencyPair::CURRENCYPAIR_MAPPER[$pair]) {
+            $this->currencyPair = $pair;
+        } else {
+            throw new BitstampParameterException('Invalid currency pair given');
+        }
         return $this;
     }
 
@@ -76,14 +85,14 @@ class TransactionsRequest extends Request
     /**
      * @param string $time
      * @return TransactionsRequest
+     * @throws BitstampParameterException
      */
     public function setTime(string $time): self
     {
         if (in_array($time, $this->allowedTimes)) {
             $this->time = $time;
         } else {
-            $this->time = 'hour';
-            trigger_error('Invalid $time value given for getTransactions', E_USER_WARNING);
+            throw new BitstampParameterException('Invalid time parameter given');
         }
         return $this;
     }

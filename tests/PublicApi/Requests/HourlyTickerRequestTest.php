@@ -29,6 +29,17 @@ class HourlyTickerRequestTest extends TestCase
     }
 
     /**
+     * @throws \Bitstamp\Exception\BitstampEndpointException
+     * @throws \Bitstamp\Exception\BitstampParameterException
+     * @expectedException \Bitstamp\Exception\BitstampParameterException
+     */
+    public function testConstructWithInvalidParameters(): void
+    {
+        $request = new HourlyTickerRequest('invalid');
+        unset($request);
+    }
+
+    /**
      * @depends testCanBeConstructed
      * @covers \Bitstamp\PublicApi\Requests\HourlyTickerRequest::setCurrencyPair
      * @covers \Bitstamp\PublicApi\Requests\HourlyTickerRequest::getCurrencyPair

@@ -8,6 +8,8 @@
 namespace Bitstamp\PublicApi\Requests;
 
 use Bitstamp\Common\Request;
+use Bitstamp\Exception\BitstampParameterException;
+use Bitstamp\Models\CurrencyPair;
 
 class HourlyTickerRequest extends Request
 {
@@ -21,15 +23,13 @@ class HourlyTickerRequest extends Request
      *
      * @param string $pair
      * @throws \Bitstamp\Exception\BitstampEndpointException
-     * @return HourlyTickerRequest
+     * @throws BitstampParameterException
      */
     public function __construct(string $pair)
     {
         $this->controller = 'ticker_hour';
-        $this->currencyPair = $pair;
+        $this->setCurrencyPair($pair);
         parent::__construct();
-
-        return $this;
     }
 
     /**
@@ -47,10 +47,16 @@ class HourlyTickerRequest extends Request
      *
      * @param string $pair
      * @return HourlyTickerRequest
+     * @throws BitstampParameterException
      */
     public function setCurrencyPair(string $pair): self
     {
-        $this->currencyPair = $pair;
+        if (in_array($pair, CurrencyPair::CURRENCYPAIR_MAPPER)
+            && $pair === CurrencyPair::CURRENCYPAIR_MAPPER[$pair]) {
+            $this->currencyPair = $pair;
+        } else {
+            throw new BitstampParameterException('Invalid currency pair given');
+        }
         return $this;
     }
 

@@ -29,6 +29,17 @@ class OrderBookRequestTest extends TestCase
     }
 
     /**
+     * @throws \Bitstamp\Exception\BitstampEndpointException
+     * @throws \Bitstamp\Exception\BitstampParameterException
+     * @expectedException \Bitstamp\Exception\BitstampParameterException
+     */
+    public function testConstructWithInvalidParameters(): void
+    {
+        $request = new OrderBookRequest('invalid');
+        unset($request);
+    }
+
+    /**
      * @depends testCanBeConstructed
      * @covers \Bitstamp\PublicApi\Requests\OrderBookRequest::setCurrencyPair
      * @covers \Bitstamp\PublicApi\Requests\OrderBookRequest::getCurrencyPair

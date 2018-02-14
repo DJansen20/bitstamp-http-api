@@ -49,15 +49,15 @@ Returns ticker data of the past day. The returned object has the following prope
 
 |Property   | Description                                   |
 |:----------|:----------------------------------------------|
-|Last       |Last BTC price                                 |                
-|High       |Last 24 hours price high                       |   
-|Low        |Last 24 hours price low                        |
-|Vwap       |Last 24 hours volume weighted average price    |
-|Volume     |Last 24 hours volume                           |
-|Bid        |Highest buy order                              |
-|Ask        |Lowest sell order                              |
-|Timestamp  |Unix timestamp date and time                   |
-|Open       |First price of the day                         |
+|last       |Last BTC price                                 |                
+|high       |Last 24 hours price high                       |   
+|low        |Last 24 hours price low                        |
+|vwap       |Last 24 hours volume weighted average price    |
+|volume     |Last 24 hours volume                           |
+|bid        |Highest buy order                              |
+|ask        |Lowest sell order                              |
+|timestamp  |Unix timestamp date and time                   |
+|open       |First price of the day                         |
 
 Example request
 ```php
@@ -94,15 +94,15 @@ Returns ticker data of the past hour
 
 |Property   | Description                                   |
 |:----------|:----------------------------------------------|
-|Last       |Last BTC price                                 |                
-|High       |Last hour price high                           |   
-|Low        |Last hour price low                            |
-|Vwap       |Last hour volume weighted average price        |
-|Volume     |Volume - Last hour volume                      |
-|Bid        |Highest buy order                              |
-|Ask        |Lowest sell order                              |
-|Timestamp  |Unix timestamp date and time                   |
-|Open       |First price of the day                         |
+|last       |Last BTC price                                 |                
+|high       |Last hour price high                           |   
+|low        |Last hour price low                            |
+|vwap       |Last hour volume weighted average price        |
+|volume     |Last hour volume                      |
+|bid        |Highest buy order                              |
+|ask        |Lowest sell order                              |
+|timestamp  |Unix timestamp date and time                   |
+|open       |First price of the day                         |
 
 Example request
 ```php
@@ -160,11 +160,11 @@ Returns an object with a descending list of transaction. Every transaction array
 
 |Property   | Description                                   |
 |:----------|:----------------------------------------------|
-|Date       |Unix timestamp date and time                   |                
-|Tid        |Transaction ID                                 |   
-|Price      |BTC price                                      |
-|Amount     |BTC amount                                     |
-|Type       |0 (buy) or 1 (sell)                            |
+|date       |Unix timestamp date and time                   |                
+|tid        |Transaction ID                                 |   
+|price      |BTC price                                      |
+|amount     |BTC amount                                     |
+|type       |0 (buy) or 1 (sell)                            |
 
 Example request
 ```php

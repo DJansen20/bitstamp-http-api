@@ -82,7 +82,9 @@ class HourlyTickerRequestTest extends TestCase
     public function testWithUri(HourlyTickerRequest $request): HourlyTickerRequest
     {
         $request->setCurrencyPair(CurrencyPair::ETHUSD);
-        $this->assertEquals('ticker_hour/ethusd', $request->withUri());
+        $this->assertEquals('ticker_hour/ethusd/', $request->withUri());
+        $request->setV1Endpoint();
+        $this->assertEquals('ticker_hour/', $request->withUri());
 
         return $request;
     }

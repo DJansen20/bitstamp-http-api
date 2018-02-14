@@ -35,7 +35,8 @@ abstract class Request
         'ticker',
         'ticker_hour',
         'order_book',
-        'eur_usd'
+        'eur_usd',
+        'transactions'
     ];
 
     /**

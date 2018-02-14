@@ -82,7 +82,9 @@ class OrderBookRequestTest extends TestCase
     public function testWithUri(OrderBookRequest $request): OrderBookRequest
     {
         $request->setCurrencyPair(CurrencyPair::ETHUSD);
-        $this->assertEquals('order_book/ethusd', $request->withUri());
+        $this->assertEquals('order_book/ethusd/', $request->withUri());
+        $request->setV1Endpoint();
+        $this->assertEquals('order_book/', $request->withUri());
 
         return $request;
     }

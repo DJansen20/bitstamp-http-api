@@ -6,24 +6,14 @@ For now the implementation only has the public methods exposed but will contain 
 
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg?style=flat-square)](https://php.net/)
 
-# Table of contents
-* [Installation](#installation)
-* [Usage](#usage)
-    * [Request limit](#request-limit)
-    * [Public methods](#public-methods)
-        * [Daily ticker](#daily-ticker)
-        * [Hourly ticker](#hourly-ticker)
-        * [Orderbook](#orderbook)
-        * [Transactions](#transactions)
-        * [Get trading pairs](#get-trading-pairs)
-        * [EUR / USD conversion rate](#eur-/-usd-conversion-rate)
-    * [Private methods](#private-methods)
-* [License](#license)
-
-## Installation
-To be added
+# Installation
+This package can be installed using composer
+```text
+composer require djansen20/bitstamp-http-api dev-master
+```
 
 ## Usage
+
 ###Request limit
 Bitstamp has implemented a request limit to prevent one IP flooding their servers.
 When using this package make sure you limit your calls to 600 requests per 10 minutes.
@@ -52,17 +42,18 @@ $api = BitstampHttpApi::PublicApi();
 Now you can start requesting data from the API.
 #### Daily ticker
 Returns ticker data of the past day. The returned object has the following properties
-```text
-Last - Last BTC price                
-High - Last 24 hours price high      
-Low - Last 24 hours price low       
-Vwap - Last 24 hours volume weighted average price
-Volume - Last 24 hours volume          
-Bid - Highest buy order
-Ask - Lowest sell order
-Timestamp - Unix timestamp date and time
-Open - First price of the day
-```
+
+|Property   | Description                                   |
+|:----------|:----------------------------------------------|
+|Last       |Last BTC price                                 |                
+|High       |Last 24 hours price high                       |   
+|Low        |Last 24 hours price low                        |
+|Vwap       |Last 24 hours volume weighted average price    |
+|Volume     |Last 24 hours volume                           |
+|Bid        |Highest buy order                              |
+|Ask        |Lowest sell order                              |
+|Timestamp  |Unix timestamp date and time                   |
+|Open       |First price of the day                         |
 
 Example request
 ```php
@@ -96,17 +87,18 @@ object(Bitstamp\PublicApi\Responses\TickerResponse)#68 (9) {
 
 #### Hourly ticker
 Returns ticker data of the past hour
-```text
-Last - Last BTC price                
-High - Last hour price high      
-Low - Last hour price low       
-Vwap - Last hour volume weighted average price
-Volume - Last hour volume          
-Bid - Highest buy order
-Ask - Lowest sell order
-Timestamp - Unix timestamp date and time
-Open - First price of the hour
-```
+
+|Property   | Description                                   |
+|:----------|:----------------------------------------------|
+|Last       |Last BTC price                                 |                
+|High       |Last hour price high                           |   
+|Low        |Last hour price low                            |
+|Vwap       |Last hour volume weighted average price        |
+|Volume     |Volume - Last hour volume                      |
+|Bid        |Highest buy order                              |
+|Ask        |Lowest sell order                              |
+|Timestamp  |Unix timestamp date and time                   |
+|Open       |First price of the day                         |
 
 Example request
 ```php
@@ -161,13 +153,14 @@ object(Bitstamp\PublicApi\Responses\OrderbookResponse)#48 (3) {
 ```
 #### Transactions
 Returns an object with a descending list of transaction. Every transaction array contains:
-```text
-date - Unix timestamp date and time
-tid - Transaction ID
-price - BTC price
-amount - BTC amount
-type - 0 (buy) or 1 (sell)
-```
+
+|Property   | Description                                   |
+|:----------|:----------------------------------------------|
+|Date       |Unix timestamp date and time                   |                
+|Tid        |Transaction ID                                 |   
+|Price      |BTC price                                      |
+|Amount     |BTC amount                                     |
+|Type       |0 (buy) or 1 (sell)                            |
 
 Example request
 ```php
@@ -212,15 +205,15 @@ object(Bitstamp\PublicApi\Responses\TransactionsResponse)#68 (1) {
 
 #### Get trading pairs
 Returns an object with a list of trading pairs. Every trading pair array contains
-```text
-name - Trading pair
-url_symbol - URL symbol of trading pair
-base_decimals - Decimal precision for base currency (BTC/USD - base: BTC)
-counter_decimals - Decimal precision for counter currency (BTC/USD - counter: USD)
-minimum_order - Minimum order size
-trading - Trading engine status (Enabled/Disabled)
-description - Trading pair description
-```
+
+|Property           | Description                                                   |
+|:------------------|:--------------------------------------------------------------|
+|url_symbol         |URL symbol of trading pair                                     |                
+|base_decimals      |Decimal precision for base currency (BTC/USD - base: BTC)      |   
+|counter_decimals   |Decimal precision for counter currency (BTC/USD - counter: USD)|
+|minimum_order      |Minimum order size                                             |
+|trading            |Trading engine status (Enabled/Disabled)                       |
+|description        |Trading pair description                                       |
 
 Example request
 ```php

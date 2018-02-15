@@ -94,7 +94,7 @@ Returns ticker data of the past hour
 
 |Property   | Description                                   |
 |:----------|:----------------------------------------------|
-|last       |Last BTC price                                 |                
+|last       |Last ticker price                                 |                
 |high       |Last hour price high                           |   
 |low        |Last hour price low                            |
 |vwap       |Last hour volume weighted average price        |

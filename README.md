@@ -49,7 +49,7 @@ Returns ticker data of the past day. The returned object has the following prope
 
 |Property   | Description                                   |
 |:----------|:----------------------------------------------|
-|last       |Last BTC price                                 |                
+|last       |Last ticker price                              |                
 |high       |Last 24 hours price high                       |   
 |low        |Last 24 hours price low                        |
 |vwap       |Last 24 hours volume weighted average price    |
@@ -94,11 +94,11 @@ Returns ticker data of the past hour
 
 |Property   | Description                                   |
 |:----------|:----------------------------------------------|
-|last       |Last ticker price                                 |                
+|last       |Last ticker price                              |                
 |high       |Last hour price high                           |   
 |low        |Last hour price low                            |
 |vwap       |Last hour volume weighted average price        |
-|volume     |Last hour volume                      |
+|volume     |Last hour volume                               |
 |bid        |Highest buy order                              |
 |ask        |Lowest sell order                              |
 |timestamp  |Unix timestamp date and time                   |

@@ -83,8 +83,6 @@ class HourlyTickerRequestTest extends TestCase
     {
         $request->setCurrencyPair(CurrencyPair::ETHUSD);
         $this->assertEquals('ticker_hour/ethusd/', $request->withUri());
-        $request->setV1Endpoint();
-        $this->assertEquals('ticker_hour/', $request->withUri());
 
         return $request;
     }

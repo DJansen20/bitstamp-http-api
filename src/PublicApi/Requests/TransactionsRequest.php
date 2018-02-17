@@ -10,7 +10,6 @@ namespace Bitstamp\PublicApi\Requests;
 use Bitstamp\Common\Request;
 use Bitstamp\Exception\BitstampParameterException;
 use Bitstamp\Models\CurrencyPair;
-use Bitstamp\Models\Endpoint;
 
 class TransactionsRequest extends Request
 {
@@ -105,10 +104,6 @@ class TransactionsRequest extends Request
      */
     public function withUri(): string
     {
-        if ($this->getEndpoint() === Endpoint::API) {
-            return sprintf('%s/', $this->controller);
-        } else {
-            return sprintf('%s/%s?time=%s', $this->controller, $this->currencyPair, $this->time);
-        }
+        return sprintf('%s/%s?time=%s', $this->controller, $this->currencyPair, $this->time);
     }
 }

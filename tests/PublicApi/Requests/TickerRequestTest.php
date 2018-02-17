@@ -83,8 +83,6 @@ class TickerRequestTest extends TestCase
     {
         $request->setCurrencyPair(CurrencyPair::ETHUSD);
         $this->assertEquals('ticker/ethusd/', $request->withUri());
-        $request->setV1Endpoint();
-        $this->assertEquals('ticker/', $request->withUri());
 
         return $request;
     }

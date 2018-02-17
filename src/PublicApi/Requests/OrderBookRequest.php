@@ -10,7 +10,6 @@ namespace Bitstamp\PublicApi\Requests;
 use Bitstamp\Common\Request;
 use Bitstamp\Exception\BitstampParameterException;
 use Bitstamp\Models\CurrencyPair;
-use Bitstamp\Models\Endpoint;
 
 class OrderBookRequest extends Request
 {
@@ -68,10 +67,6 @@ class OrderBookRequest extends Request
      */
     public function withUri(): string
     {
-        if ($this->getEndpoint() === Endpoint::API) {
-            return sprintf('%s/', $this->controller);
-        } else {
-            return sprintf('%s/%s/', $this->controller, $this->currencyPair);
-        }
+        return sprintf('%s/%s/', $this->controller, $this->currencyPair);
     }
 }

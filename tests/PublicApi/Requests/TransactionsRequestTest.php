@@ -117,8 +117,6 @@ class TransactionsRequestTest extends TestCase
         $this->assertEquals('bchbtc', $request->getCurrencyPair());
         $this->assertEquals('hour', $request->getTime());
         $this->assertEquals('transactions/bchbtc?time=hour', $request->withUri());
-        $request->setV1Endpoint();
-        $this->assertEquals('transactions/', $request->withUri());
 
         return $request;
     }

@@ -11,7 +11,6 @@ use Bitstamp\Common\Request;
 use Bitstamp\Exception\BitstampEndpointException;
 use Bitstamp\Exception\BitstampParameterException;
 use Bitstamp\Models\CurrencyPair;
-use Bitstamp\Models\Endpoint;
 
 class TickerRequest extends Request
 {
@@ -27,7 +26,7 @@ class TickerRequest extends Request
      * @throws BitstampEndpointException
      * @throws BitstampParameterException
      */
-    public function __construct(string $pair)
+    public function __construct(?string $pair = null)
     {
         $this->controller = 'ticker';
         $this->setCurrencyPair($pair);
@@ -67,10 +66,6 @@ class TickerRequest extends Request
      */
     public function withUri(): string
     {
-        if ($this->getEndpoint() === Endpoint::API) {
-            return sprintf('%s/', $this->controller);
-        } else {
-            return sprintf('%s/%s/', $this->controller, $this->currencyPair);
-        }
+        return sprintf('%s/%s/', $this->controller, $this->currencyPair);
     }
 }
